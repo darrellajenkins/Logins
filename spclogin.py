@@ -2,6 +2,7 @@ import getpass
 import dotenv
 from dotenv import load_dotenv
 import os
+import sys
 
 
 # Set program run configuration (see modify options) to emulate terminal in ouput console.
@@ -67,13 +68,18 @@ class Admin:
 
 def loginAdmin():
     """Logs in an Admin and creates an instance of the Admin  Class."""
+    admins = [('80', 'David', 'Jem'), ('90', 'Suzie', 'Jing'), ('100', 'George', 'Franks')]
     Go = True
     while Go:
         try:
             a, b, c = input("Please log in with <id, first name, last name>: \n\t").split(", ")
-            admin = Admin(int(a), str(b), str(c))
-            print(f"Welcome Administrator {b[0]}{c[0]}!")
-            break
+            if (a, b, c) not in admins:
+                print("That is not an authorized admin name or id.")
+                sys.exit()
+            else:
+                admin = Admin(int(a), str(b), str(c))
+                print(f"Welcome Administrator {b[0]}{c[0]}!")
+                break
         except ValueError:
             print("Please enter each value, separated by a comma and one space.")
             continue
