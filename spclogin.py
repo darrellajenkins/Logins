@@ -5,7 +5,7 @@ import os
 import sys
 
 
-# Set program run configuration (see modify options) to emulate terminal in ouput console.
+# Set program run configuration (see modify options) to emulate terminal in output console.
 
 load_dotenv()
 admin_password = os.getenv("SPC_KEY")
@@ -87,15 +87,21 @@ def loginAdmin():
 
 
 def admin_func():
-    """Asks the Admin which function to execute.  If a valid function of the Admin class is entered, it is automatically executed.  Enter function based on the instance (admin) as: <admin unlock>.
+    """Asks the Admin which function to execute. If a valid function of the Admin class is entered, it is automatically executed. Enter function based on the instance (admin) as: <admin unlock>.
         The program automatically replaces the space with a dot and adds the parenthesis to the end and executes the function."""
     if admin:
         selection = input("Enter the function you wish to execute preceded by the word 'admin' and one space: ")
+        selection = selection.replace(" ", ".")
     return selection
 
 
-print(Admin.sh.describe_user())
+print(Admin.sh.describe_user())  # PART 1
 admin = loginAdmin()
-func = str(admin_func()).replace(" ", ".")
-function = str(func + "()")
-eval(function)
+func = str(admin_func())
+
+# function = str(func + "()")  # THIS IS THE 1ST WAY (PART 2) OF DOING IT BUT EVAL IS NOT SAFE FOR PRODUCTION USE.
+# eval(function)
+
+if func == "admin.unlock":  # HERE IS ANOTHER WAY (PART 2) OF CODING IT
+    admin.unlock()
+

@@ -9,7 +9,7 @@ OLIVIA = os.getenv("OLIVIA")
 ETHAN = os.getenv("ETHAN")
 BRIANNA = os.getenv("BRIANNA")
 
-# Set program run configuration (see modify options) to emulate terminal in ouput console.
+# Set program run configuration (see modify options) to emulate terminal in output console.
 users = {
     'olivia': OLIVIA,
     'ethan': ETHAN,
