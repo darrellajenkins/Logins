@@ -95,13 +95,9 @@ def admin_func():
     return selection
 
 
-print(Admin.sh.describe_user())  # PART 1
+print(Admin.sh.describe_user())
 admin = loginAdmin()
 func = str(admin_func())
 
-# function = str(func + "()")  # THIS IS THE 1ST WAY (PART 2) OF DOING IT BUT EVAL IS NOT SAFE FOR PRODUCTION USE.
-# eval(function)
-
-if func == "admin.unlock":  # HERE IS ANOTHER WAY (PART 2) OF CODING IT
+if func == "admin.unlock": 
     admin.unlock()
-
